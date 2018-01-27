@@ -47,3 +47,4 @@ webencodings==0.5.1
 widgetsnbextension==3.1.0
 scikit-learn
 stemming
+nltk
