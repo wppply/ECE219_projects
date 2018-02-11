@@ -52,4 +52,49 @@ def cluster_score(labels,pred,p = False):
         print("Adjusted Rand-Index: %.3f"% ARI)
         print("mutual_info_score: %.3f"% m)
     return [h,c,v,ARI,m]
+
+def compare_result(Best_LSI,lables,pred):
+    cnf_matrix = metrics.confusion_matrix(lables, pred)
+
+    plot_confusion_matrix(cnf_matrix, classes=['tech','rec'],
+                                title='Confusion matrix, without normalization')        
+    cluster_score(lables,pred,p = True)
+
+    x1 = Best_LSI[pred == 0][:, 0]
+    y1 = Best_LSI[pred == 0][:, 1]
+    x2 = Best_LSI[pred == 1][:, 0]
+    y2 = Best_LSI[pred == 1][:, 1]
+
+    x3 = Best_LSI[lables == 0][:, 0]
+    y3 = Best_LSI[lables == 0][:, 1]
+    x4 = Best_LSI[lables == 1][:, 0]
+    y4 = Best_LSI[lables == 1][:, 1]
+
+    plt.figure()
+    plt.plot(x1,y1,'b.')
+    plt.plot(x2,y2,'g.')
+    plt.title("clustering classification")
+
+    plt.figure()
+    plt.plot(x3,y3,'b.')
+    plt.plot(x4,y4,'g.')
+    plt.title("actual classification")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
