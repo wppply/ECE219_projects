@@ -18,6 +18,7 @@ def plot_confusion_matrix(cm, classes,
         print('Confusion matrix, without normalization')
 
     print(cm)
+    plt.figure()
 
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     plt.title(title)
@@ -42,10 +43,13 @@ def cluster_score(labels,pred,p = False):
     c = metrics.completeness_score(labels, pred)
     v = metrics.v_measure_score(labels, pred)
     ARI = metrics.adjusted_rand_score(labels,pred)
+    m = metrics.mutual_info_score(labels,pred)
+
     if p == True:
         print("Homogeneity: %0.3f" % h)
         print("Completeness: %0.3f" % c)
         print("V-measure: %0.3f" % v)
         print("Adjusted Rand-Index: %.3f"% ARI)
-    return [h,c,v,ARI]
+        print("mutual_info_score: %.3f"% m)
+    return [h,c,v,ARI,m]
     
