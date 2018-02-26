@@ -1,5 +1,6 @@
 read.me
 ## Project 2 
 ------
+-please comment all the pickle related lines
 -Run the jupyter notebook in order
 -all the result calculation and plot functions are stored in utils.py
